@@ -10,22 +10,24 @@ oxiNewsApp.controller("navMainController", function($scope, $http) {
 oxiNewsApp.controller('NewListController', function ($scope, $http) {
 	$http.get(endpoint + "/getNews")
         .success(function(response) {$scope.news = response;});
-
 });
 
-oxiNewsApp.controller('CarouselCtrl', function ($scope, $http) {
-
-    $scope.myInterval = 5000;
+oxiNewsApp.controller('carouselController', function ($scope, $http) {
 	$http.get(endpoint + "/getNews")
-        .success(function(response) {
-
-            $scope.news = response;
-
-        });
-
+        .success(function(response) {$scope.news = response;});
 });
 
 oxiNewsApp.controller("categoryController", function($scope, $http) {
     $http.get(endpoint +  "/getCategories")
         .success(function(response) {$scope.categories = response;});
+});
+
+oxiNewsApp.controller("langController", function($scope, $http) {
+    $http.get(endpoint +  "/getLanguages")
+        .success(function(response) {$scope.languages = response;});
+});
+
+oxiNewsApp.controller("lastUpdateController", function($scope, $http) {
+    $http.get(endpoint +  "/getLastUpdate")
+        .success(function(response) {$scope.lastUpdate = response;});
 });

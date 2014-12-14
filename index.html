@@ -24,7 +24,6 @@
                     </div> <!-- / .navbar-header -->
 
                     <div class="add-space">
-                        728 x 90 px Banner
                     </div> <!-- / .adspace -->
 
                 </div>	<!-- /.container -->
@@ -45,42 +44,61 @@
                 </nav> <!-- /.main-menu -->
             </section> <!-- / #ccr-nav-main -->
 
-          
+            <section id="ccr-nav-below-main">
+                <nav class="second-menu">
+                    <div class="container">
+
+                        <div ng-controller="categoryController" class="collapse navbar-collapse ccr-nav-below-main">
+                            <ul class="nav navbar-nav">
+                                <li ng-repeat="category in categories">
+                                    <a href="{{category.href}}">{{category.value}}</a>
+                                </li>
+                            </ul> <!-- /.nav /.navbar-nav -->
+                        </div>
+
+                        <div ng-controller="langController" class="ccr-language">
+                            <ul>
+                                <li ng-repeat="lang in languages">
+                                    <a href="{{lang.href}}"><img ng-src="{{lang.image}}" alt="{{lang.key}}">{{lang.value}}</a>
+                                </li>
+                            </ul>
+                        </div> <!-- /.ccr-language -->
+                    </div><!-- /.container -->
+                </nav><!-- /.second-menu -->
+            </section><!-- / #ccr-nav-below-main -->
         </header>
 
-        <div ng-controller="categoryController">
-            <ul>
-                <li ng-repeat="category in categories">
-                    {{ category.key + ', ' + category.value }}
-                </li>
-            </ul>
-        </div>
-        <div ng-controller="CarouselCtrl">
-            <div style="height: 305px">
-                <carousel interval="interval">
-                    <slide ng-repeat="new in news" active="slide.active">
-                        <img ng-src="{{new.image}}" style="margin:auto;">
-                        <div class="carousel-caption">
-                            <h4>{{new.name}}</h4>
-                            <p>{{new.snippet}}</p>
-                        </div>
-                    </slide>
-                </carousel>
+        <section id="ccr-main-section">
+            <div class="container">
+                <section id="ccr-left-section" class="col-md-8">
+
+                    <div ng-controller="lastUpdateController" class="ccr-last-update">
+                        <div class="update-ribon">{{lastUpdate.key}}</div> <!-- /.update-ribon -->
+                        <span class="update-ribon-right"></span> <!-- /.update-ribon-left -->
+                        <div class="update-news-text" id="update-news-text">
+                            <ul id="latestUpdate">
+                                <li><a href="{{lastUpdate.link}}">{{lastUpdate.value}}</a></li>
+                            </ul>
+                        </div> <!-- /.update-text -->
+                        <div class="update-right-border"></div> <!-- /.update-right-border -->
+                    </div> <!-- / .ccr-last-update -->
+                </section>
             </div>
-        </div>
+        </section>
 
 
-  <!--      <div ng-controller="NewListController">
-            <ul>
-                <li ng-repeat="new in news" style="float:left">
-                    <span>{{new.name}}</span>
-
-                    <p>{{new.snippet}}</p>
-                    <a target="_blank" ng-href="{{new.imageUrl}}"><img ng-src="{{new.image}}"></a>
-                </li>
-            </ul>
-        </div>-->
-
-
+        <!--<div ng-controller="CarouselCtrl">-->
+            <!--<div style="height: 305px">-->
+                <!--<carousel interval="interval">-->
+                    <!--<slide ng-repeat="new in news" active="slide.active">-->
+                        <!--<img ng-src="{{new.image}}" style="margin:auto;">-->
+                        <!--<div class="carousel-caption">-->
+                            <!--<h4>{{new.name}}</h4>-->
+                            <!--<p>{{new.snippet}}</p>-->
+                        <!--</div>-->
+                    <!--</slide>-->
+                <!--</carousel>-->
+            <!--</div>-->
+        <!--</div>-->
     </body>
 </html>
